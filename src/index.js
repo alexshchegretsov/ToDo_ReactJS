@@ -1,12 +1,18 @@
-import React from 'react';
+import React from 'react'; //babel compile jsx to js within React help -> React.createElement()
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// React.element() - little lightweight object,
+// which creates within JSX-syntaxis.
+const el = (
+    <div>
+        <h1>ToDo App</h1>
+        <input type="text" placeholder="search" />
+        <ul>
+            <li>Learn React</li>
+            <li>Create ToDo app</li>
+        </ul>
+    </div>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// ReactDOM - library which can transform VirtualDOM into Real
+ReactDOM.render(el, document.getElementById("root"));
