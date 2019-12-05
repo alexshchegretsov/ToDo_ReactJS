@@ -8,9 +8,9 @@ import SearchPanel from './components/search-panel';
 // whole app component
 const App = () => {
     const todoData = [
-        {label: "Drink Coffee", important: false},
-        {label: "Build App", important: true},
-        {label: "Ride bike", important: false},
+        {id: 1, label: "Drink Coffee", important: false},
+        {id: 2, label: "Build App", important: true},
+        {id: 3, label: "Ride bike", important: false},
     ];
     return (
         <div>
