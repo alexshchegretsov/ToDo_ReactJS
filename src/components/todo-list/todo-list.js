@@ -3,14 +3,16 @@ import TodoListItem from '../todo-list-item/todo-list-item';
 import './todo-list.css';
 
 // list component
-const ToDoList = ({todos}) => {
+const ToDoList = ({todos, onDeleteAppLevel}) => {
     const elements = todos.map((item) => {
         const {id, ...itemProps} = item;
         // label={item.label} important={item.important}
         return (
             <li key={id}
                 className="list-group-item">
-                <TodoListItem {...itemProps}/>
+                <TodoListItem
+                    {...itemProps}
+                    onDeleteListLevel={() => onDeleteAppLevel(id)}/>
             </li>
         )
 

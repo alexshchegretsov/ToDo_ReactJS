@@ -21,7 +21,10 @@ const App = () => {
                 <FilterBar/>
             </div>
 
-            <ToDoList todos={todoData}/>
+            <ToDoList
+                todos={todoData}
+                onDeleteAppLevel={(id)=> console.log("deleted id ", id)}
+            />
         </div>
     )
 };
