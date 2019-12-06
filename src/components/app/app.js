@@ -11,6 +11,7 @@ const App = () => {
         {id: 1, label: "Drink Coffee", important: false},
         {id: 2, label: "Build App", important: true},
         {id: 3, label: "Ride bike", important: false},
+        {id: 4, label: "Learn React", important: true},
     ];
     return (
         <div className="todo-app">

@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import './todo-list-item.css';
 
 
 export default class TodoListItem extends Component {
+    // class field with arrow func
+    onLabelClick = () => {
+            console.log(`${this.props.label}`)
+        };
 
     render() {
 
@@ -14,7 +18,12 @@ export default class TodoListItem extends Component {
         return (
             <span className="todo-list-item">
 
-            <span style={style} className="todo-list-item-label">
+            <span
+                style={style}
+                className="todo-list-item-label"
+                // add event listener
+                onClick={this.onLabelClick}
+            >
                 {label}
             </span>
 
