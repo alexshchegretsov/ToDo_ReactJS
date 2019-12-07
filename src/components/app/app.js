@@ -18,6 +18,7 @@ export default class App extends Component {
             this.createItem("Build App"),
             this.createItem("Ride Bike"),
             this.createItem("Learn React"),
+            this.createItem("Watch Football"),
         ],
 
     };
@@ -54,18 +55,42 @@ export default class App extends Component {
         });
     };
 
+    onToggleProperty(arr, id, propName) {
+        const idx = arr.findIndex((item) => item.id === id);
+        const oldItem = arr[idx];
+        const newItem = {...oldItem, [propName]: !oldItem[propName]};
+        return [
+            ...arr.slice(0, idx),
+            newItem,
+            ...arr.slice(idx + 1)
+        ];
+    }
+
     onToggleDone = (id) => {
-        console.log("Toggle done", id)
+        this.setState(({todoData}) => {
+            return {
+                todoData: this.onToggleProperty(todoData, id, "done")
+            }
+        })
     };
 
     onToggleImportant = (id) => {
-        console.log("Toggle important", id)
+        this.setState(({todoData}) => {
+            return {
+                todoData: this.onToggleProperty(todoData, id, "important")
+            }
+        })
     };
 
+
     render() {
+        const {todoData} = this.state;
+        const countDone = todoData.filter((item) => item.done).length;
+        const countTodo = todoData.length - countDone;
+
         return (
             <div className="todo-app">
-                <AppHeader toDo={this.state.todoData.length} done={4}/>
+                <AppHeader toDo={countTodo} done={countDone}/>
 
                 <div className="search-filter-panel d-flex">
                     <SearchPanel/>
