@@ -14,17 +14,28 @@ export default class App extends Component {
 
     state = {
         todoData: [
-            {id: 1, label: "Drink Coffee", important: false},
-            {id: 2, label: "Build App", important: true},
-            {id: 3, label: "Ride bike", important: false},
-            {id: 4, label: "Learn React", important: true},
+            this.createItem("Drink Coffee"),
+            this.createItem("Build App"),
+            this.createItem("Ride Bike"),
+            this.createItem("Learn React"),
         ],
 
     };
+
+    createItem(label) {
+        return {
+            id: this.maxID++,
+            important: false,
+            done: false,
+            label: label
+
+        }
+    }
+
     // del element by id without change previous state
     deleteItem = (id) => {
         this.setState(({todoData}) => {
-            const data = todoData.filter((item) => item["id"] !== id);
+            const data = todoData.filter((item) => item.id !== id);
             return {
                 todoData: data
             }
@@ -33,11 +44,7 @@ export default class App extends Component {
 
     addItem = () => {
         // generate item id ?
-        const item = {
-            id: this.maxID++,
-            important: false,
-            label: "Sleep"
-        };
+        const item = this.createItem("Sleep");
         // add item to array
         this.setState(({todoData}) => {
             const newArray = [item, ...todoData];
@@ -45,6 +52,14 @@ export default class App extends Component {
                 todoData: newArray
             }
         });
+    };
+
+    onToggleDone = (id) => {
+        console.log("Toggle done", id)
+    };
+
+    onToggleImportant = (id) => {
+        console.log("Toggle important", id)
     };
 
     render() {
@@ -61,6 +76,8 @@ export default class App extends Component {
                     todos={this.state.todoData}
                     // для наглядности не сокращал до {this.deleteItem}
                     onDeleteAppLevel={(id) => this.deleteItem(id)}
+                    onToggleDoneAppLevel={(id) => this.onToggleDone(id)}
+                    onToggleImportantAppLevel={(id) => this.onToggleImportant(id)}
                 />
                 <AddItem
                     onAddItemAppLevel={() => this.addItem()}

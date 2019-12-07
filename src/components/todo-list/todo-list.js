@@ -3,7 +3,9 @@ import TodoListItem from '../todo-list-item/todo-list-item';
 import './todo-list.css';
 
 // list component
-const ToDoList = ({todos, onDeleteAppLevel}) => {
+const ToDoList = ({todos, onDeleteAppLevel,
+                      onToggleDoneAppLevel,
+                      onToggleImportantAppLevel}) => {
     const elements = todos.map((item) => {
         const {id, ...itemProps} = item;
         // label={item.label} important={item.important}
@@ -12,7 +14,12 @@ const ToDoList = ({todos, onDeleteAppLevel}) => {
                 className="list-group-item">
                 <TodoListItem
                     {...itemProps}
-                    onDeleteListLevel={() => onDeleteAppLevel(id)}/>
+                    onDeleteListLevel={() => onDeleteAppLevel(id)}
+                    onToggleDoneListLevel={() => onToggleDoneAppLevel(id)}
+                    onToggleImportantListLevel={() => onToggleImportantAppLevel(id)}
+                    done={item.done}
+                    important={item.important}
+                />
             </li>
         )
 
