@@ -1,0 +1,8 @@
+<App/>
+    <AppHeader/>       <-- TotalDone, TotalTodo,
+    <SearchPanel/>
+    <FilterBar/>
+    <ToDoList/>
+        <ListItem/>    <-- done, important - in ListItem state
+        <ListItem/>
+    <AddItem/>
