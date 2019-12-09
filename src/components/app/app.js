@@ -43,9 +43,9 @@ export default class App extends Component {
         })
     };
 
-    addItem = () => {
+    addItem = (data) => {
         // generate item id ?
-        const item = this.createItem("Sleep");
+        const item = this.createItem(data);
         // add item to array
         this.setState(({todoData}) => {
             const newArray = [item, ...todoData];
@@ -105,7 +105,7 @@ export default class App extends Component {
                     onToggleImportantAppLevel={(id) => this.onToggleImportant(id)}
                 />
                 <AddItem
-                    onAddItemAppLevel={() => this.addItem()}
+                    onAddItemAppLevel={(data) => this.addItem(data)}
                 />
             </div>
         )
