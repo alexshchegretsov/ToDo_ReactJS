@@ -1,4 +1,4 @@
 ### ToDo Application
 
-<p align="center"><img src="images/screen.ong"></p>
+<p align="center"><img src="images/screen.png"></p>
 
