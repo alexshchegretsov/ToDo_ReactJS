@@ -18,9 +18,18 @@ export default class AddItem extends Component {
     onSubmit = (e) => {
         // browser do not refresh page
         e.preventDefault();
-        this.props.onAddItemAppLevel(this.state.label)
+        this.props.onAddItemAppLevel(this.state.label);
+        this.setState({
+            label: ""
+        })
     };
-
+    /* onSubmit -> setState -> label: "message" -> label: ""
+    *  state changes -> React update elements by calling render()
+    *  in render() we update value={this.state.label}
+    *  When we set value by program - it is not onChange event
+    *  React component controls element
+    *  If we can set elements value by state value - we all this element "controlled element"
+    * */
     render() {
         return (
             <form className="item-add d-flex"
@@ -30,6 +39,7 @@ export default class AddItem extends Component {
                        className="form-control"
                        placeholder="what needs to be done"
                        onChange={this.onLabelChange}
+                       value={this.state.label}
                 />
                 {/* button type must be submit!!!*/}
                 <button type="submit"
