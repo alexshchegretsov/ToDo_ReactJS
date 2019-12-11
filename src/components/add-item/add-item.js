@@ -19,16 +19,14 @@ export default class AddItem extends Component {
         // browser do not refresh page
         e.preventDefault();
         this.props.onAddItemAppLevel(this.state.label);
-        this.setState({
-            label: ""
-        })
+        this.setState({label: ""})
     };
     /* onSubmit -> setState -> label: "message" -> label: ""
     *  state changes -> React update elements by calling render()
     *  in render() we update value={this.state.label}
     *  When we set value by program - it is not onChange event
     *  React component controls element
-    *  If we can set elements value by state value - we all this element "controlled element"
+    *  If we can set elements value by state value - we call this element "controlled element"
     * */
     render() {
         return (

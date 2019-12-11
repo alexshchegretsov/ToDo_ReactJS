@@ -24,6 +24,7 @@ export default class App extends Component {
     };
 
     createItem(label) {
+
         return {
             id: this.maxID++,
             important: false,
@@ -82,6 +83,15 @@ export default class App extends Component {
         })
     };
 
+    onSearch = (data, reserve) => {
+
+        this.setState(({todoData}) => {
+            return {
+                todoData: data? reserve.filter( (item) => item.label.includes(data) ) : reserve
+            }
+        });
+
+    };
 
     render() {
         const {todoData} = this.state;
@@ -93,7 +103,10 @@ export default class App extends Component {
                 <AppHeader toDo={countTodo} done={countDone}/>
 
                 <div className="search-filter-panel d-flex">
-                    <SearchPanel/>
+                    <SearchPanel
+                    onSearchAppLevel={ (data, reserve) => this.onSearch(data, reserve)}
+                    primalData={this.state.todoData}
+                    />
                     <FilterBar/>
                 </div>
 
